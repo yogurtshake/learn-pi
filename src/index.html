@@ -14,15 +14,15 @@
         <button id="show-pi-btn">π</button>
     </nav>
     <div class="container">
-        
-        <form id="pi-form" autocomplete="off">
-            <input type="text" id="digit-input" placeholder="Enter next digit" maxlength="1" autocomplete="off"
-                inputmode="numeric" pattern="[0-9]">
-            <button type="button" id="reveal-btn">Reveal</button>
-            <button type="button" id="restart-btn" style="display:none;">Restart</button>
-        </form>
+        <div id="digit-counter">Digits: 0</div>
+        <div id="pi-sequence-container">
+            <span id="pi-sequence">3.14</span>
+            <input type="text" id="digit-input" maxlength="1" autocomplete="off" inputmode="numeric" pattern="[0-9]"
+                autofocus>
+        </div>
         <div id="feedback"></div>
-        <div id="digit-counter">Digits Entered: 0</div>
+        <button type="button" id="reveal-btn">Reveal next</button>
+        <button type="button" id="restart-btn" style="display:none;">Restart</button>
     </div>
 
     <div id="pi-popup">
