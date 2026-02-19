@@ -8,6 +8,9 @@ const showPiBtn = document.getElementById("show-pi-btn");
 const piPopup = document.getElementById("pi-popup");
 const piPopupContent = document.getElementById("pi-popup-content");
 const closePiPopup = document.getElementById("close-pi-popup");
+const showInfoBtn = document.getElementById("show-info-btn");
+const infoPopup = document.getElementById("info-popup");
+const closeInfoPopup = document.getElementById("close-info-popup");
 const piDigitsPre = document.getElementById("pi-digits");
 const toggleAnimationsSwitch = document.getElementById(
   "toggle-animations-switch",
@@ -188,6 +191,18 @@ function setupEventListeners() {
 
   piPopup.addEventListener("click", (e) => {
     if (e.target === piPopup) piPopup.style.display = "none";
+  });
+
+  showInfoBtn.addEventListener("click", () => {
+    infoPopup.style.display = "flex";
+  });
+
+  closeInfoPopup.addEventListener("click", () => {
+    infoPopup.style.display = "none";
+  });
+
+  infoPopup.addEventListener("click", (e) => {
+    if (e.target === infoPopup) infoPopup.style.display = "none";
   });
 
   toggleAnimationsSwitch.addEventListener("change", () => {

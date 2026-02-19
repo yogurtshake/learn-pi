@@ -13,6 +13,7 @@
 <body>
     <nav>
         <button id="show-pi-btn">π</button>
+        <button id="show-info-btn">info</button>
     </nav>
     <div class="container">
         <div id="digit-counter">Digits: 2</div>
@@ -39,6 +40,23 @@
             <button id="close-pi-popup" aria-label="Close">&times;</button>
             <h2>1000 digits of pi</h2>
             <pre id="pi-digits"></pre>
+        </div>
+    </div>
+
+    <div id="info-popup">
+        <div id="info-popup-content">
+            <button id="close-info-popup" aria-label="Close">&times;</button>
+            <h2>info</h2>
+            <div>
+                <p>
+                    - I made this for myself to help me memorize pi. That is all.
+                    <br /><br />
+                    - I only load in 1000 digits to check against. I highly doubt anyone will need more.
+                    <br /><br />
+                    - This app is "installable" on your mobile device as a Progressive Web App (PWA). Google how to
+                    install a PWA if you don't know.
+                </p>
+            </div>
         </div>
     </div>
 

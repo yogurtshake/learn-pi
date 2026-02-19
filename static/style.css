@@ -23,7 +23,8 @@ nav {
   line-height: normal;
 }
 
-#show-pi-btn {
+#show-pi-btn,
+#show-info-btn {
   font-size: 1.5rem;
   padding: 0.5rem 1.2rem;
   background-color: rgb(255, 145, 0);
@@ -34,7 +35,8 @@ nav {
   transition: background-color 0.3s;
 }
 
-#show-pi-btn:hover {
+#show-pi-btn:hover,
+#show-info-btn:hover {
   background-color: rgb(110, 77, 27);
 }
 
@@ -169,7 +171,8 @@ nav {
   background-color: rgb(110, 77, 27);
 }
 
-#pi-popup {
+#pi-popup,
+#info-popup {
   display: none;
   position: fixed;
   z-index: 2000;
@@ -201,6 +204,24 @@ nav {
   flex-direction: column;
 }
 
+#info-popup-content {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 90vw;
+  max-height: 80vh;
+  min-height: 400px;
+  overflow: auto;
+  text-align: left;
+  position: relative;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+}
+
 #pi-digits {
   white-space: pre-wrap;
   word-break: break-all;
@@ -210,7 +231,8 @@ nav {
   margin-top: 1rem;
 }
 
-#close-pi-popup {
+#close-pi-popup,
+#close-info-popup {
   position: absolute;
   top: 0.7rem;
   right: 1rem;
@@ -221,7 +243,8 @@ nav {
   border: none;
 }
 
-#close-pi-popup:hover {
+#close-pi-popup:hover,
+#close-info-popup:hover {
   color: #ff9800;
 }
 
@@ -311,7 +334,8 @@ nav {
     width: 1.5em;
     height: 1.5em;
   }
-  #pi-popup-content {
+  #pi-popup-content,
+  #info-popup-content {
     padding: 1rem 0.5rem;
     font-size: 1em;
   }
@@ -323,7 +347,8 @@ nav {
     color: #eee !important;
   }
   .container,
-  #pi-popup-content {
+  #pi-popup-content,
+  #info-popup-content {
     background: #222;
     color: #eee;
   }
