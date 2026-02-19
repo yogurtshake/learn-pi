@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Pi</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <nav>
+        <button id="show-pi-btn">π</button>
+    </nav>
+    <div class="container">
+        
+        <form id="pi-form" autocomplete="off">
+            <input type="text" id="digit-input" placeholder="Enter next digit" maxlength="1" autocomplete="off"
+                inputmode="numeric" pattern="[0-9]">
+            <button type="button" id="reveal-btn">Reveal</button>
+            <button type="button" id="restart-btn" style="display:none;">Restart</button>
+        </form>
+        <div id="feedback"></div>
+        <div id="digit-counter">Digits Entered: 0</div>
+    </div>
+
+    <div id="pi-popup">
+        <div id="pi-popup-content">
+            <button id="close-pi-popup" aria-label="Close">&times;</button>
+            <h2>1000 Digits of Pi</h2>
+            <pre id="pi-digits"></pre>
+        </div>
+    </div>
+
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>
