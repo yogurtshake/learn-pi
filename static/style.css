@@ -62,12 +62,22 @@ nav {
   letter-spacing: 0.12em;
   font-family: "Consolas", "Courier New", monospace;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.pi-line {
+  display: flex;
+  align-items: center;
 }
 
 #digit-input {
-  font-size: 2.8rem;
-  width: 2.2em;
-  height: 2.2em;
+  font-size: 2.2rem;
+  width: 1.5em;
+  height: 1.5em;
   text-align: center;
   border: 2px solid #ccc;
   border-radius: 8px;
@@ -80,6 +90,7 @@ nav {
   box-sizing: border-box;
   background: #fff;
   caret-color: #ff9100;
+  vertical-align: middle;
 }
 
 #digit-input:focus {
@@ -135,6 +146,7 @@ nav {
 
 #digit-counter {
   font-weight: bold;
+  font-size: 1.8rem;
   color: #ff9800;
   margin: 1.2rem 0 0.5rem 0;
 }
@@ -213,13 +225,86 @@ nav {
   color: #ff9800;
 }
 
+.toggle-switch {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.toggle-switch input[type="checkbox"] {
+  display: none;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background: #ccc;
+  border-radius: 30px;
+  transition: background 0.2s;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.switch-label-text {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  pointer-events: none;
+  transition: left 0.2s;
+  font-size: 1.1em;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 26px;
+  height: 26px;
+  background: #fff;
+  border-radius: 50%;
+  transition: left 0.2s;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .slider {
+  background: #ff9800;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .slider::before {
+  left: 32px;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .slider .switch-label-text {
+  left: 16px;
+}
+
+.toggle-switch
+  input[type="checkbox"]:not(:checked)
+  + .slider
+  .switch-label-text {
+  left: 36px;
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  justify-content: center;
+  margin-top: 1em;
+}
+
 @media (max-width: 700px) {
   .container {
     padding: 1rem 0.5rem;
     max-width: 98vw;
   }
   #pi-sequence {
-    font-size: 2rem;
+    font-size: 1.1rem !important;
   }
   #digit-input {
     font-size: 2rem;

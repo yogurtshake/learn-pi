@@ -24,12 +24,20 @@
         <div id="feedback"></div>
         <button type="button" id="reveal-btn">Reveal next</button>
         <button type="button" id="restart-btn" style="display:none;">Restart</button>
+        <br />
+        <div class="switch-row">
+            <span>Animations:</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="toggle-animations-switch" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
     </div>
 
     <div id="pi-popup">
         <div id="pi-popup-content">
             <button id="close-pi-popup" aria-label="Close">&times;</button>
-            <h2>1000 Digits of Pi</h2>
+            <h2>1000 digits of pi</h2>
             <pre id="pi-digits"></pre>
         </div>
     </div>
