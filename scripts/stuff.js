@@ -9,14 +9,60 @@ const piPopup = document.getElementById("pi-popup");
 const piPopupContent = document.getElementById("pi-popup-content");
 const closePiPopup = document.getElementById("close-pi-popup");
 const piDigitsPre = document.getElementById("pi-digits");
+const toggleAnimationsSwitch = document.getElementById(
+  "toggle-animations-switch",
+);
+const switchLabelText = document.getElementById("switch-label-text");
 
 let piDigits = "";
 let currentIndex = 3;
 let runEnded = false;
+let animationsEnabled = true;
 
 function updateDisplay() {
-  piSequence.textContent = piDigits.slice(0, currentIndex + 1);
+  const lineLength = 12; // or whatever fits your design
+  let display = piDigits.slice(0, currentIndex + 1);
+
+  // Build lines, starting with "3.14"
+  let lines = [];
+  let firstLine = display.slice(0, 4); // "3.14"
+  let rest = display.slice(4);
+
+  // Fill the first line up to lineLength
+  let firstLineRest = rest.slice(0, lineLength - firstLine.length);
+  lines.push(firstLine + firstLineRest);
+
+  // Remaining digits
+  rest = rest.slice(lineLength - firstLine.length);
+
+  // Fill subsequent lines
+  while (rest.length > 0) {
+    lines.push(rest.slice(0, lineLength));
+    rest = rest.slice(lineLength);
+  }
+
+  // If the last line is full, add an empty line for the input box
+  if (lines[lines.length - 1].length === lineLength) {
+    lines.push("");
+  }
+
+  // Build HTML for lines, input box at the end of the last line
+  let html = "";
+  for (let i = 0; i < lines.length; i++) {
+    html += `<div class="pi-line">${lines[i]}`;
+    if (i === lines.length - 1) {
+      html += `<span id="input-holder"></span>`;
+    }
+    html += `</div>`;
+  }
+  piSequence.innerHTML = html;
   digitCounter.textContent = `Digits: ${currentIndex - 1}`;
+
+  // Move the input box into the correct place
+  const inputHolder = document.getElementById("input-holder");
+  if (inputHolder) {
+    inputHolder.appendChild(digitInput);
+  }
 }
 
 function resetInput() {
@@ -48,28 +94,48 @@ function restart() {
 function handleCorrectInput() {
   digitInput.classList.add("correct");
 
-  setTimeout(() => {
+  if (animationsEnabled) {
+    setTimeout(() => {
+      digitInput.classList.remove("correct");
+      currentIndex++;
+      updateDisplay();
+
+      if (currentIndex + 1 >= piDigits.length) {
+        feedback.textContent =
+          "You've reached one thousand digits. Get a life.";
+        endRun();
+      } else {
+        resetInput();
+      }
+    }, 300);
+  } else {
     digitInput.classList.remove("correct");
     currentIndex++;
     updateDisplay();
 
     if (currentIndex + 1 >= piDigits.length) {
-      feedback.textContent = "You've reached the end!";
+      feedback.textContent = "You've reached one thousand digits. Get a life.";
       endRun();
     } else {
       resetInput();
     }
-  }, 300);
+  }
 }
 
 function handleIncorrectInput() {
   digitInput.classList.add("incorrect");
 
-  setTimeout(() => {
+  if (animationsEnabled) {
+    setTimeout(() => {
+      digitInput.classList.remove("incorrect");
+      digitInput.value = "";
+      digitInput.focus();
+    }, 1000);
+  } else {
     digitInput.classList.remove("incorrect");
     digitInput.value = "";
     digitInput.focus();
-  }, 1000);
+  }
 }
 
 function setupEventListeners() {
@@ -100,9 +166,13 @@ function setupEventListeners() {
     digitInput.classList.add("correct");
     endRun();
 
-    setTimeout(() => {
+    if (animationsEnabled) {
+      setTimeout(() => {
+        digitInput.classList.remove("correct");
+      }, 700);
+    } else {
       digitInput.classList.remove("correct");
-    }, 700);
+    }
   });
 
   restartBtn.addEventListener("click", restart);
@@ -118,6 +188,10 @@ function setupEventListeners() {
 
   piPopup.addEventListener("click", (e) => {
     if (e.target === piPopup) piPopup.style.display = "none";
+  });
+
+  toggleAnimationsSwitch.addEventListener("change", () => {
+    animationsEnabled = toggleAnimationsSwitch.checked;
   });
 }
 
