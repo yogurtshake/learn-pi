@@ -72,7 +72,9 @@ nav {
   border: 2px solid #ccc;
   border-radius: 8px;
   margin-left: 0.3em;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
   outline: none;
   font-family: "Consolas", "Courier New", monospace;
   box-sizing: border-box;
@@ -98,15 +100,27 @@ nav {
 }
 
 @keyframes flash-green {
-  0% { background: #fff; }
-  50% { background: #c8ffc8; }
-  100% { background: #fff; }
+  0% {
+    background: #fff;
+  }
+  50% {
+    background: #c8ffc8;
+  }
+  100% {
+    background: #fff;
+  }
 }
 
 @keyframes flash-red {
-  0% { background: #fff; }
-  50% { background: #ffd6d6; }
-  100% { background: #fff; }
+  0% {
+    background: #fff;
+  }
+  50% {
+    background: #ffd6d6;
+  }
+  100% {
+    background: #fff;
+  }
 }
 
 #feedback {
@@ -147,8 +161,11 @@ nav {
   display: none;
   position: fixed;
   z-index: 2000;
-  left: 0; top: 0; width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.35);
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.35);
   justify-content: center;
   align-items: center;
 }
@@ -157,15 +174,28 @@ nav {
   background: #fff;
   padding: 2rem 2.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-  max-width: 90vw;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 90vw;
   max-height: 80vh;
+  min-height: 400px;
   overflow: auto;
   text-align: left;
   position: relative;
   font-family: "Consolas", "Courier New", monospace;
   font-size: 1.1rem;
   word-break: break-all;
+  display: flex;
+  flex-direction: column;
+}
+
+#pi-digits {
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  margin-top: 1rem;
 }
 
 #close-pi-popup {
@@ -207,7 +237,8 @@ nav {
     background: linear-gradient(to right, #222, #333) !important;
     color: #eee !important;
   }
-  .container, #pi-popup-content {
+  .container,
+  #pi-popup-content {
     background: #222;
     color: #eee;
   }
