@@ -210,7 +210,7 @@ function setupEventListeners() {
   });
 }
 
-fetch("../static/pi.txt")
+fetch("static/pi.txt")
   .then((response) => response.text())
   .then((text) => {
     piDigits = text.trim();
