@@ -301,7 +301,7 @@ nav {
   left: 32px;
 }
 
-.toggle-switch input[type="checkbox"]:focus:not(:focus-visible) + .slider {
+.toggle-switch input[type="checkbox"]:focus + .slider {
   outline: none !important;
   box-shadow: none !important;
 }
