@@ -23,33 +23,27 @@ let runEnded = false;
 let animationsEnabled = true;
 
 function updateDisplay() {
-  const lineLength = 12; // or whatever fits your design
+  const lineLength = 12;
   let display = piDigits.slice(0, currentIndex + 1);
 
-  // Build lines, starting with "3.14"
   let lines = [];
-  let firstLine = display.slice(0, 4); // "3.14"
+  let firstLine = display.slice(0, 4);
   let rest = display.slice(4);
 
-  // Fill the first line up to lineLength
   let firstLineRest = rest.slice(0, lineLength - firstLine.length);
   lines.push(firstLine + firstLineRest);
 
-  // Remaining digits
   rest = rest.slice(lineLength - firstLine.length);
 
-  // Fill subsequent lines
   while (rest.length > 0) {
     lines.push(rest.slice(0, lineLength));
     rest = rest.slice(lineLength);
   }
 
-  // If the last line is full, add an empty line for the input box
   if (lines[lines.length - 1].length === lineLength) {
     lines.push("");
   }
 
-  // Build HTML for lines, input box at the end of the last line
   let html = "";
   for (let i = 0; i < lines.length; i++) {
     html += `<div class="pi-line">${lines[i]}`;
@@ -61,7 +55,6 @@ function updateDisplay() {
   piSequence.innerHTML = html;
   digitCounter.textContent = `Digits: ${currentIndex - 1}`;
 
-  // Move the input box into the correct place
   const inputHolder = document.getElementById("input-holder");
   if (inputHolder) {
     inputHolder.appendChild(digitInput);
