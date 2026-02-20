@@ -348,10 +348,18 @@ nav {
     background: linear-gradient(to right, #222, #333) !important;
     color: #eee !important;
   }
+
   .container,
   #pi-popup-content,
   #info-popup-content {
     background: #222;
     color: #eee;
+  }
+
+  .slider {
+    background: #7c7c7c;
+  }
+  .toggle-switch input[type="checkbox"]:checked + .slider {
+    background: #ff9800;
   }
 }
