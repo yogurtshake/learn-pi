@@ -56,7 +56,7 @@ nav {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin: 2.5rem 0 1.5rem 0;
+  margin: 2.5rem 0 -2rem 0;
 }
 
 #pi-sequence {
@@ -249,42 +249,36 @@ nav {
 }
 
 .toggle-switch {
+  position: relative;
   display: inline-block;
+  width: 60px;
+  height: 30px;
   cursor: pointer;
+  vertical-align: middle;
 }
 
 .toggle-switch input[type="checkbox"] {
-  display: none;
-}
-
-.toggle-switch input[type="checkbox"]:focus + .slider {
-  outline: none;
-  box-shadow: none;
+  opacity: 0;
+  width: 60px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  cursor: pointer;
+  z-index: 2;
 }
 
 .slider {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 60px;
   height: 30px;
   background: #ccc;
   border-radius: 30px;
   transition: background 0.2s;
-  font-weight: bold;
-  font-size: 1.1em;
-}
-
-.switch-label-text {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #fff;
-  pointer-events: none;
-  transition: left 0.2s;
-  font-size: 1.1em;
+  z-index: 1;
 }
 
 .slider::before {
@@ -307,15 +301,9 @@ nav {
   left: 32px;
 }
 
-.toggle-switch input[type="checkbox"]:checked + .slider .switch-label-text {
-  left: 16px;
-}
-
-.toggle-switch
-  input[type="checkbox"]:not(:checked)
-  + .slider
-  .switch-label-text {
-  left: 36px;
+.toggle-switch input[type="checkbox"]:focus:not(:focus-visible) + .slider {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .switch-row {
