@@ -15,7 +15,7 @@ const piDigitsPre = document.getElementById("pi-digits");
 const toggleAnimationsSwitch = document.getElementById(
   "toggle-animations-switch",
 );
-const switchLabelText = document.getElementById("switch-label-text");
+const toggleDarkmodeSwitch = document.getElementById("toggle-darkmode-switch");
 
 let piDigits = "";
 let currentIndex = 3;
@@ -213,12 +213,30 @@ function setupEventListeners() {
   toggleAnimationsSwitch.addEventListener("change", () => {
     animationsEnabled = toggleAnimationsSwitch.checked;
   });
+
+  toggleDarkmodeSwitch.addEventListener("change", () => {
+    if (toggleDarkmodeSwitch.checked) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  });
 }
 
 fetch("static/pi.txt")
   .then((response) => response.text())
   .then((text) => {
     piDigits = text.trim();
+
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      toggleDarkmodeSwitch.checked = true;
+    } else {
+      toggleDarkmodeSwitch.checked = false;
+    }
+
     updateDisplay();
     resetInput();
     restartBtn.style.display = "none";
