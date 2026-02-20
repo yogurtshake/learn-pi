@@ -1,6 +1,0 @@
-extremely simple PWA
-
--have reference popup containing ~1000 digits of pi
--have user enter as many digits as they know, stop them (buzz? flash red?) when they enter an incorrect digit, but let them keep going after they correct it
--have a "reveal next digit" button and don't allow them to continue once this is clicked, 
-but instead give a restart button
