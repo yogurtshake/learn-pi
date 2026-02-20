@@ -45,13 +45,25 @@ function updateDisplay() {
   }
 
   let html = "";
+
   for (let i = 0; i < lines.length; i++) {
-    html += `<div class="pi-line">${lines[i]}`;
+    html += `<div class="pi-line">`;
+
+    if (i !== lines.length - 1) {
+      html += `<span class="input-placeholder"></span>`;
+    }
+
+    html += lines[i];
+
     if (i === lines.length - 1) {
       html += `<span id="input-holder"></span>`;
+    } else {
+      html += `<span class="input-placeholder"></span>`;
     }
+
     html += `</div>`;
   }
+
   piSequence.innerHTML = html;
   digitCounter.textContent = `Digits: ${currentIndex - 1}`;
 
